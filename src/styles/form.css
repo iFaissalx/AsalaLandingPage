@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+* {
+  font-family: "Cairo", sans-serif;
+}
+.formpage {
+  background-color: rgb(10, 17, 58);
+  width: 100%;
+  height: 150vh;
+  background-image: url(../imgs/back.png);
+  background-size: 130%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+
+}
+
+.formpage h1 {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+::placeholder {
+  text-align: right;
+}
+
+.formcont {
+  width: 70vw;
+  border-radius: 10px;
+  background-color: #fafafa;
+  overflow: hidden;
+  grid-template-columns: repeat(2, 1fr);
+  display: inline-block;
+  vertical-align: top;
+  padding: 2.3rem 2.2rem;
+  z-index: 10;
+  overflow: hidden;
+  position: relative;
+}
+
+.formpage p {
+  color: #111d42;
+  line-height: 2.2rem;
+  text-align: right;
+  font-size: 1.7rem;
+  margin-top: 0;
+}
+.transparent {
+  color: #111d428e;
+  font-size: 1.6rem;
+}
+
+.s h3 {
+  width: 100%;
+  background-color: #f0ddbf;
+  margin-top: 3rem;
+}
+
+.info {
+  background-color: #ecedf0;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.info p {
+  font-size: 0.8rem;
+  margin: 0;
+  margin-left: 6.5rem;
+  line-height: 1rem;
+}
+.info span {
+  font-size: 0.8rem;
+}
+
+.infop {
+  font-size: 0.8rem;
+  margin-left: 0rem;
+}
+
+.transparent.o{
+  font-size: 0.4rem;
+  line-height: 0.1rem;
+}
+.circle {
+  background-color: #111d42;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  position: relative;
+}
+
+
+.info img {
+  width: 20px;
+  vertical-align: middle;
+  padding-top: 1rem;
+}
+input {
+  width: 84%;
+  outline: none;
+  border: 2px solid #d7d7d7;
+  background: none;
+  padding: 0.68rem 1.2rem;
+  color: rgb(112, 112, 112);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  transition: 0.3s;
+  text-align: right;
+}
+
+textarea.input {
+  padding: 0.8rem 1.2rem;
+  min-height: 150px;
+  border-radius: 22px;
+  resize: none;
+  overflow-y: auto;
+  text-align: right;
+}
+.input-container.n {
+  display: inline-flex;
+  width: 100%;
+  gap: 0.2rem;
+}
+
+.name {
+  width: 100%;
+  text-align: right;
+}
+
+.input-container label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  padding: 0 0.4rem;
+  color: #fafafa;
+  font-size: 0.9rem;
+  font-weight: 400;
+  pointer-events: none;
+  z-index: 1000;
+  transition: 0.5s;
+}
+
+.input-container.textarea label {
+  top: 1rem;
+  transform: translateY(0);
+}
+
+.btn {
+  padding: 0.6rem 1.3rem;
+  background-color: #f0ddbf;
+  border: 2px solid #fafafa;
+  font-size: 0.95rem;
+  color: #111d42;
+  line-height: 1;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+
+
+.input-container span {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  color: transparent;
+  pointer-events: none;
+  z-index: 500;
+}
+
+.input-container span:before,
+.input-container span:after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  opacity: 0;
+  transition: 0.3s;
+  height: 5px;
+  background-color: #b19988;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-container span:before {
+  left: 50%;
+}
+
+.input-container span:after {
+  right: 50%;
+}
+
+.input-container.focus label {
+  top: 0;
+  transform: translateY(-50%);
+  left: 25px;
+  font-size: 0.8rem;
+}
+
+.input-container.focus span:before,
+.input-container.focus span:after {
+  width: 50%;
+  opacity: 1;
+}
+
+.header {
+  height: 28vh;
+  background-color: #ffff;
+}
+
+.header img {
+  width: 70px;
+  padding-top: 2rem;
+}
+
+.header h1 {
+  margin-top: 1rem;
+  background-color: #fafafa;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+.input-container select {
+  width: 100%;
+  outline: none;
+  border: 2px solid #d7d7d7;
+  background: none;
+  padding: 0.68rem 1.2rem;
+  color: rgb(112, 112, 112);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  transition: 0.3s;
+  text-align: right;
+}
