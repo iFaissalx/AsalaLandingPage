@@ -1,7 +1,11 @@
+import Axios  from "axios";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../imgs/headerlogo.png";
-import icon1 from "../imgs/twitter.png";
+import icon1 from "../imgs/icon1.png";
+import icon2 from "../imgs/icon2.png";
 import last from "../imgs/last.png";
+import Thankyou from "./Thankyou";
 export default function Form() {
   const cities = [
     { id: "1", name: "الرياض" },
@@ -29,8 +33,40 @@ export default function Form() {
   const handleCity = (id) => {
     const dt = projects.filter((x) => x.cityID === id);
     setProject(dt);
+  
   };
   const url = "https://api.sheetmonkey.io/form/r91o5SghgEb7tvkwEqUnV";
+
+  const data = {
+    FirstName: "",
+    LastName: "",
+    Phone: "",
+    Email: "",
+    City: "",
+    Project: "",
+    Created: "x-sheetmonkey-current-date-time",
+  };
+
+  const [send, setSend] = useState(data);
+  const handleChange = (e) => {
+    setSend({
+      ...send,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log(send);
+    Axios.post(url,send);
+    routeChange();
+  }
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/thankyou`; 
+    navigate(path);
+  }
 
   return (
     <div className="formpage">
@@ -42,7 +78,8 @@ export default function Form() {
         <div className="s">
           <h3>قررت تتملك وحدة سكنية؟</h3>
         </div>
-        <form className="formcont" action={url} method="post">
+        <form className="formcont"  onSubmit={handleSubmit}>
+       
           <p>
             سجل اهتمامك
             <br />
@@ -56,12 +93,14 @@ export default function Form() {
               type="text"
               placeholder="الاسم الاخير"
               required
+              onChange={handleChange}
             />{" "}
             <input
               name="FirstName"
               type="text"
               placeholder="الاسم الاول"
               required
+              onChange={handleChange}
             />
           </div>
           <div className="input-container">
@@ -71,6 +110,7 @@ export default function Form() {
               type="number"
               placeholder="رقم الجوال"
               required
+              onChange={handleChange}
             />
           </div>
           <div className="input-container">
@@ -80,6 +120,7 @@ export default function Form() {
               type="text"
               placeholder="البريد الالكتروني"
               required
+              onChange={handleChange}
             />
           </div>
           <div className="input-container">
@@ -87,7 +128,8 @@ export default function Form() {
               name="City"
               id="optcities"
               className="citymenu"
-              onChange={(e) => handleCity(e.target.value)}
+              onChange={(e) =>{handleCity(e.target.value); handleChange(e)}}
+            
               required
             >
               <option value="0">اختر المدينة</option>
@@ -108,6 +150,7 @@ export default function Form() {
               id="optprojects"
               className="citymenu"
               required
+              onChange={handleChange}
             >
               <option value="" disabled selected>
                 اختر المشروع
@@ -130,31 +173,44 @@ export default function Form() {
               value="x-sheetmonkey-current-date-time"
             ></input>
           </div>
+    
+            <button className="btn" type="submit" >
+              ارسل طلبك
+            </button>{" "}
 
-          <button className="btn" type="submit">
-            ارسل طلبك
-          </button>
           <div className="info">
             <p>
               للتواصل
               <br />
-              <span className="transparent">tel:920033608</span>
+              <a
+                href="tel:+966920033608"
+                className="transparent i"
+                target="_blank"
+                rel="noreferrer"
+              >
+                tel:920033608
+              </a>{" "}
             </p>
             <div className="circle">
               <img src={icon1} alt="" />
             </div>
           </div>
           <div className="info">
-            <p style={{ marginLeft: "5.7rem"}}>
+            <p style={{ marginLeft: "5.7rem" }}>
               البريد الالكتروني
               <br />
-              <span className="transparent">tel:920033608</span>
+              <a
+                href="mailto:info@asalaresidence.com"
+                className="transparent o"
+              >
+                info@asalaresidence.com
+              </a>
             </p>
             <div className="circle">
-              <img src={icon1} alt="" />
+              <img src={icon2} alt="" />
             </div>
           </div>
-          
+
           <img className="last" src={last} alt="" />
         </form>
       </div>
