@@ -12,11 +12,11 @@ export default function Thankyou() {
         <div className="s">
           <h3>!تم تسجيل طلبك</h3>
         </div>
-        <form className="formcont">
+        <form className="formcont t">
           <p>
-            شكرًا لك
+            شاكرين لك
             <br />
-            <span className="transparent">سيقوم فريقنا بالتواصل معك</span>
+            <span className="transparent t">ونقدر اهتمامك</span>
           </p>
         </form>
       </div>

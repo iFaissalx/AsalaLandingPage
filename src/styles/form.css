@@ -5,7 +5,7 @@
 .formpage {
   background-color: rgb(10, 17, 58);
   width: 100%;
-  height: 150vh;
+  height: 180vh;
   background-image: url(../imgs/back.png);
   background-size: 130%;
   background-position: bottom;
@@ -47,6 +47,20 @@
   position: relative;
 }
 
+.formcont.t {
+  width: 70vw;
+  border-radius: 10px;
+  background-color: transparent;
+  overflow: hidden;
+  grid-template-columns: repeat(2, 1fr);
+  display: inline-block;
+  vertical-align: top;
+  padding: 2.3rem 2.2rem;
+  z-index: 10;
+  overflow: hidden;
+  position: relative;
+}
+
 .formpage p {
   color: #111d42;
   line-height: 2.2rem;
@@ -57,7 +71,7 @@
 }
 
 .thankpage p {
-  color: #111d42;
+  color: #c9c9c9;
   line-height: 2.2rem;
   text-align: right;
   font-size: 1.7rem;
@@ -76,6 +90,11 @@ a{
 }
 .transparent{
   color: #111d428e;
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+.transparent.t{
+  color: #ffffffc4;
   font-size: 1.6rem;
   font-weight: normal;
 }

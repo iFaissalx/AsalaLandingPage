@@ -1,16 +1,31 @@
-import Axios  from "axios";
+import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../imgs/headerlogo.png";
 import icon1 from "../imgs/icon1.png";
 import icon2 from "../imgs/icon2.png";
-import last from "../imgs/last.png";
+import icon3 from "../imgs/asala social-12.png";
+import icon4 from "../imgs/asala social-10.png";
+import icon5 from "../imgs/asala social-13.png";
+import icon6 from "../imgs/asala social-19.png";
+import last from "../imgs/asala social-09.png";
 import Thankyou from "./Thankyou";
 export default function Form() {
   const cities = [
     { id: "1", name: "الرياض" },
     { id: "2", name: "جدة" },
   ];
+  const payrange = [
+    { id: "1", name: "850,000-950,000" },
+    { id: "2", name: "1,000,000-1,200,000" },
+    { id: "3", name: "1,200,000 واعلى" },
+  ];
+  const payment = [
+    { id: "1", name: "نقدًا" },
+    { id: "2", name: "بنك/غير مدعوم" },
+    { id: "3", name: "بنك/ مدعوم" },
+  ];
+
   const projects = [
     { id: "1", cityID: "1", name: "مشروع الملقا" },
     { id: "2", cityID: "1", name: "مشروع الجزيرة" },
@@ -26,16 +41,25 @@ export default function Form() {
   ];
   const [city, setCity] = useState([]);
   const [project, setProject] = useState([]);
+  const [payop, setPayop] = useState([]);
+  const [paym, setPaym] = useState([]);
   useEffect(() => {
     setCity(cities);
+  }, []);
+
+  useEffect(() => {
+    setPayop(payrange);
+  }, []);
+
+  useEffect(() => {
+    setPaym(payment);
   }, []);
 
   const handleCity = (id) => {
     const dt = projects.filter((x) => x.cityID === id);
     setProject(dt);
-  
   };
-  const url = "https://api.sheetmonkey.io/form/r91o5SghgEb7tvkwEqUnV";
+  const url = "https://api.sheetmonkey.io/form/5w15hkvusngDHVgaZ3Kdyn";
 
   const data = {
     FirstName: "",
@@ -55,18 +79,18 @@ export default function Form() {
     });
   };
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(send);
-    Axios.post(url,send);
+    Axios.post(url, send);
     routeChange();
-  }
+  };
 
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/thankyou`; 
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/thankyou`;
     navigate(path);
-  }
+  };
 
   return (
     <div className="formpage">
@@ -78,14 +102,12 @@ export default function Form() {
         <div className="s">
           <h3>قررت تتملك وحدة سكنية؟</h3>
         </div>
-        <form className="formcont"  onSubmit={handleSubmit}>
-       
+        <form className="formcont" onSubmit={handleSubmit}>
           <p>
             سجل اهتمامك
             <br />
             <span className="transparent">بإحدى مشاريعنا</span>
           </p>
-
           <div className="input-container n">
             {" "}
             <input
@@ -128,8 +150,10 @@ export default function Form() {
               name="City"
               id="optcities"
               className="citymenu"
-              onChange={(e) =>{handleCity(e.target.value); handleChange(e)}}
-            
+              onChange={(e) => {
+                handleCity(e.target.value);
+                handleChange(e);
+              }}
               required
             >
               <option value="0">اختر المدينة</option>
@@ -167,17 +191,55 @@ export default function Form() {
             </select>
           </div>
           <div className="input-container">
+            <select
+              name="Payrange"
+              id="optprojects"
+              className="citymenu"
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled selected>القدرة الشرائية</option>
+              {payop && payop !== undefined
+                ? payop.map((ctr, index) => {
+                    return (
+                      <option key={index} value={ctr.value}>
+                        {ctr.name}
+                      </option>
+                    );
+                  })
+                : "no city"}
+            </select>
+          </div>
+          <div className="input-container">
+            <select
+              name="Payment"
+              id="optprojects"
+              className="citymenu"
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled selected>طريقة الدفع</option>
+              {paym && paym !== undefined
+                ? paym.map((ctr, index) => {
+                    return (
+                      <option key={index} value={ctr.value}>
+                        {ctr.name}
+                      </option>
+                    );
+                  })
+                : "no city"}
+            </select>
+          </div>
+          <div className="input-container">
             <input
               type="hidden"
               name="Created"
               value="x-sheetmonkey-current-date-time"
             ></input>
           </div>
-    
-            <button className="btn" type="submit" >
-              ارسل طلبك
-            </button>{" "}
-
+          <button className="btn" type="submit">
+            ارسل طلبك
+          </button>{" "}
           <div className="info">
             <p>
               للتواصل
@@ -210,7 +272,66 @@ export default function Form() {
               <img src={icon2} alt="" />
             </div>
           </div>
-
+          <div className="info">
+            <p style={{ marginLeft: "7.5rem" }}>
+              الموقع الالكتروني
+              <br />
+              <a
+                href="https://www.asalaresidence.com"
+                className="transparent o"
+              >
+                asalaresidence.com
+              </a>
+            </p>
+            <div className="circle">
+              <img src={icon3} alt="" />
+            </div>
+          </div>
+          <div className="info">
+            <p style={{ marginLeft: "8.5rem" }}>
+              Instagram
+              <br />
+              <a
+                href="https://www.instagram.com/asalaresidence"
+                className="transparent o"
+              >
+                AsalaResidence
+              </a>
+            </p>
+            <div className="circle">
+              <img src={icon4} alt="" />
+            </div>
+          </div>
+          <div className="info">
+            <p style={{ marginLeft: "8.5rem" }}>
+              Twitter
+              <br />
+              <a
+                href="https://www.twitter.com/AsalaResidence"
+                className="transparent o"
+              >
+                AsalaResidence
+              </a>
+            </p>
+            <div className="circle">
+              <img src={icon5} alt="" />
+            </div>
+          </div>
+          <div className="info">
+            <p style={{ marginLeft: "8.5rem" }}>
+             Snapchat
+              <br />
+              <a
+                href="https://www.snapchat.com/add/asalaresidence"
+                className="transparent o"
+              >
+                AsalaResidence
+              </a>
+            </p>
+            <div className="circle">
+              <img src={icon6} alt="" />
+            </div>
+          </div>
           <img className="last" src={last} alt="" />
         </form>
       </div>
